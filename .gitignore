@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+
+static/uploads/*
+static/reports/*
+
+*.h5
+
+chest_xray/
