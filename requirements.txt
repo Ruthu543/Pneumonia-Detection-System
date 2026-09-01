@@ -7,6 +7,6 @@ Pillow
 python-dotenv
 fpdf2
 numpy
-opencv-python
+opencv-python-headless
 huggingface_hub
 gunicorn
