@@ -1,12 +1,12 @@
 Flask
 Flask-PyMongo
 Werkzeug
-tensorflow==2.19.0
-keras==3.9.0
+tensorflow==2.18.0
+keras==3.7.0
 Pillow
 python-dotenv
 fpdf2
 numpy
-opencv-python-headless
+opencv-python
 huggingface_hub
 gunicorn
