@@ -367,7 +367,7 @@ Large .h5 files are managed using Git LFS.
 ⚙️ Installation & Setup
 
 Clone the Repository
-git clone 
+git clone https://github.com/Ruthu543/Pneumonia-Detection-System.git
 
 Navigate to the Project
 cd Pneumonia_Prediction
