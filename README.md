@@ -513,8 +513,6 @@ End-to-end ML project development
 
 Ruthu Madhavi Kola
 
-Python Developer | Data Analyst | Machine Learning Enthusiast
-
 GitHub: https://github.com/Ruthu543
 
 ⭐ Support
