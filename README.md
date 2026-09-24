@@ -1,4 +1,4 @@
-🫁 Pneumonia Prediction from Chest X-Ray Images
+🫁 Pneumonia Prediction from Chest X-Ray Images(Cloud-Based Database)
 
 An end-to-end Deep Learning image classification project that analyzes chest X-ray images and predicts whether an image belongs to the Normal or Pneumonia class.
 
