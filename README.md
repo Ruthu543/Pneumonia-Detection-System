@@ -225,25 +225,6 @@ Data augmentation increases training-data diversity without requiring additional
 
 ---
 
-## ⚖️ Class Imbalance Handling
-
-Class imbalance can cause a model to favor the majority class.
-
-The project analyzes the distribution of NORMAL and PNEUMONIA images and can use class weighting during model training.
-
-Example:
-
-```python
-class_weights = {
-    0: 1.05,
-    1: 0.95
-}
-```
-
-The exact weights depend on the class distribution of the training dataset.
-
----
-
 ## 📊 Model Evaluation
 
 The VGG19 model is evaluated using training and validation metrics to monitor model performance and learning progress.
@@ -261,7 +242,7 @@ The following metrics are monitored during VGG19 model training and validation.
 
 | Model | Accuracy | Loss | Val_Accuracy | Learning Rate |
 |---|---:|---:|---:|---:|
-| **VGG19** |  0.9511  | — | — | — |
+| **VGG19** |  0.9511  | 0.1320 | 0.7500 | 0.7848 |
 
 
 ---
