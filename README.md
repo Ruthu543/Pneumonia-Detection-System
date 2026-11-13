@@ -236,6 +236,8 @@ The VGG19 model is evaluated using training and validation metrics to monitor mo
 | Validation Accuracy | Measures classification accuracy on the validation dataset. |
 | Learning Rate | Controls the step size used by the optimizer during model training. |
 
+
+
 ### 📈 Model Performance
 
 The following metrics are monitored during VGG19 model training and validation.
@@ -373,7 +375,7 @@ git clone https://github.com/Ruthu543/Pneumonia-Detection-System.git
 ### 2. Navigate to the Project Directory
 
 ```bash
-cd Pneumonia_Prediction
+cd Pneumonia-Prediction
 ```
 
 ### 3. Create a Virtual Environment
