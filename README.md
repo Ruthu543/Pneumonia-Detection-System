@@ -7,7 +7,7 @@ The project covers the complete machine learning lifecycle, including dataset an
 
 ---
 
-## 📌 Project Overview
+### 📌 Project Overview
 
 Pneumonia is a respiratory infection that can cause visible abnormalities in chest X-ray images. This project explores how Deep Learning and Transfer Learning can be used to build a computer-aided image classification system.
 
@@ -246,42 +246,23 @@ The exact weights depend on the class distribution of the training dataset.
 
 ## 📊 Model Evaluation
 
-The VGG19 model is evaluated using multiple classification metrics.
+The VGG19 model is evaluated using training and validation metrics to monitor model performance and learning progress.
 
-| Metric | Purpose |
+| Metric | Description |
 |---|---|
-| Accuracy | Overall percentage of correct predictions. |
-| Precision | Proportion of predicted Pneumonia cases that are actually Pneumonia. |
-| Recall | Proportion of actual Pneumonia cases correctly identified. |
-| F1-Score | Harmonic mean of Precision and Recall. |
-| Confusion Matrix | Detailed breakdown of classification errors. |
+| Accuracy | Measures the proportion of correctly classified training images. |
+| Loss | Measures the model's prediction error during training. |
+| Validation Accuracy | Measures classification accuracy on the validation dataset. |
+| Learning Rate | Controls the step size used by the optimizer during model training. |
 
-### 🚨 Why Recall Matters
+### 📈 Model Performance
 
-For a pneumonia-screening use case, recall is particularly important because it measures how many actual Pneumonia cases are correctly identified.
+The following metrics are monitored during VGG19 model training and validation.
 
-A false negative occurs when:
-
-```text
-Actual:    PNEUMONIA
-Predicted: NORMAL
-```
-
-Therefore, model evaluation should not rely on accuracy alone. Recall, Precision, F1-Score, and the Confusion Matrix should also be considered.
-
----
-
-## 📈 Model Performance
-
-The VGG19 model is evaluated using the independent test dataset.
-
-| Model | Accuracy | Precision | Recall | F1-Score |
+| Model | Accuracy | Loss | Val_Accuracy | Learning Rate |
 |---|---:|---:|---:|---:|
-| **VGG19** | — | — | — | — |
+| **VGG19** |  0.9511  | — | — | — |
 
-The final model performance is determined based on the evaluation results.
-
-*Note: Replace the placeholders with your actual test-set results.*
 
 ---
 
