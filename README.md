@@ -1,524 +1,651 @@
 🫁 Pneumonia Prediction from Chest X-Ray Images(Cloud-Based Database)
 
-An end-to-end Deep Learning image classification project that analyzes chest X-ray images and predicts whether an image belongs to the Normal or Pneumonia class.
+# Pneumonia Prediction from Chest X-Ray Images
+### VGG19 | Transfer Learning | Flask | Cloud-Based Database
 
-The project covers the complete machine learning lifecycle: dataset analysis, image preprocessing, data augmentation, transfer learning, fine-tuning, model evaluation, model saving, and Flask deployment.
+An end-to-end Deep Learning image classification project that analyzes chest X-ray images and predicts whether an image belongs to the **NORMAL** or **PNEUMONIA** class using a pretrained VGG19 architecture.
 
-📌 Project Overview
+The project covers the complete machine learning lifecycle, including dataset analysis, image preprocessing, data augmentation, transfer learning, fine-tuning, model evaluation, model saving, and Flask deployment.
+
+---
+
+## 📌 Project Overview
 
 Pneumonia is a respiratory infection that can cause visible abnormalities in chest X-ray images. This project explores how Deep Learning and Transfer Learning can be used to build a computer-aided image classification system.
 
-The trained model classifies chest X-ray images into:
+The project uses the pretrained **VGG19 (Visual Geometry Group 19)** architecture to classify chest X-ray images into two categories:
 
-🟢 NORMAL
+- **NORMAL** – No pneumonia detected.
+- **PNEUMONIA** – Pneumonia-related patterns detected.
 
-🔴 PNEUMONIA
+The pretrained VGG19 model is adapted to the chest X-ray classification task using Transfer Learning and Fine-Tuning.
 
-The final model is integrated into a Flask web application, where users can upload a chest X-ray image and receive a model-generated prediction.
+The final trained model is integrated into a Flask web application, allowing users to upload chest X-ray images and receive model-generated predictions.
 
-End-to-End Workflow
+### End-to-End Workflow
 
-Chest X-Ray Dataset ↓ Exploratory Data Analysis ↓ Image Preprocessing ↓ Data Augmentation ↓ Transfer Learning ↓ Model Training ↓ Fine-Tuning ↓ Model Evaluation ↓ Best Model Selection ↓ Save Trained Model ↓ Flask Web Application ↓ Upload X-Ray ↓ Prediction
-
-🎯 Project Objectives
-
-🩻 Build an automated chest X-ray image classification system.
-
-🔍 Perform Exploratory Data Analysis and analyze class distribution.
-
-🧹 Apply image preprocessing and normalization.
-
-🔄 Use data augmentation to improve model generalization.
-
-⚖️ Analyze class imbalance and apply class weighting where appropriate.
-
-🧠 Experiment with multiple CNN and Transfer Learning architectures.
-
-🔧 Fine-tune selected pretrained layers.
-
-📊 Evaluate models using Accuracy, Precision, Recall, F1-Score, and Confusion Matrix.
-
-🏆 Compare different architectures and select a suitable model for deployment.
-
-🌐 Integrate the trained model into a Flask web application.
-
-📤 Allow users to upload chest X-ray images through a web interface.
-
-⚡ Generate Normal/Pneumonia predictions.
-
-📦 Manage large trained model files using Git LFS.
-
-🧠 Models Experimented With
-
-The project explores multiple pretrained Convolutional Neural Network architectures:
-
-Model
-
-Approach
-
-VGG19
-
-Transfer Learning + Fine-Tuning
-
-ResNet50
-
+```text
+Chest X-Ray Dataset
+        |
+        v
+Exploratory Data Analysis
+        |
+        v
+Image Preprocessing
+        |
+        v
+Data Augmentation
+        |
+        v
+Pretrained VGG19 Architecture
+        |
+        v
 Transfer Learning
+        |
+        v
+Model Training
+        |
+        v
+Fine-Tuning
+        |
+        v
+Model Evaluation
+        |
+        v
+Best Model Selection
+        |
+        v
+Save Trained Model
+        |
+        v
+Flask Web Application
+        |
+        v
+Upload X-Ray Image
+        |
+        v
+Generate Prediction
+        |
+        v
+NORMAL / PNEUMONIA
+```
 
-MobileNetV2
+---
 
-Transfer Learning
+## 🎯 Project Objectives
 
-EfficientNetB0
+- Build an automated chest X-ray image classification system.
+- Perform Exploratory Data Analysis and analyze class distribution.
+- Apply image preprocessing and normalization.
+- Use data augmentation to improve model generalization.
+- Analyze class imbalance and apply class weighting where appropriate.
+- Implement the pretrained VGG19 architecture using Transfer Learning.
+- Fine-tune selected pretrained VGG19 layers.
+- Evaluate the model using Accuracy, Precision, Recall, F1-Score, and Confusion Matrix.
+- Analyze model performance and select the best-performing VGG19 model.
+- Integrate the trained model into a Flask web application.
+- Allow users to upload chest X-ray images through a web interface.
+- Generate NORMAL/PNEUMONIA predictions.
+- Manage large trained model files using Git LFS.
 
-Transfer Learning
+---
 
-DenseNet121
+## 🧠 Pretrained Model: VGG19
 
-Transfer Learning
+This project uses **VGG19 (Visual Geometry Group 19)**, a pretrained Convolutional Neural Network developed for image classification.
 
-The models are compared based on their ability to distinguish between Normal and Pneumonia chest X-ray images.
+VGG19 consists of 19 trainable layers, including convolutional and fully connected layers in its original architecture.
 
-🔧 Transfer Learning Strategy
+The pretrained VGG19 model is used as the foundation for learning image features from chest X-ray images.
 
-Instead of training a Deep Learning model completely from scratch, pretrained CNN architectures are used as the starting point.
+### Why VGG19?
 
-Stage 1 — Feature Extraction
+- Pretrained on a large-scale image dataset.
+- Learns useful visual features through convolutional layers.
+- Supports Transfer Learning for medical image classification.
+- Provides a feature extraction backbone for custom classification tasks.
+- Supports Fine-Tuning to adapt pretrained features to chest X-ray images.
 
-The pretrained convolutional layers are initially frozen while custom classification layers are trained.
+The pretrained VGG19 architecture is adapted to classify images into NORMAL and PNEUMONIA categories.
 
-Pretrained CNN ↓ Frozen Convolutional Layers ↓ Feature Extraction ↓ Custom Classification Layers ↓ NORMAL / PNEUMONIA
+---
 
-Stage 2 — Fine-Tuning
+## 🔧 Transfer Learning Strategy
 
-Selected pretrained layers are unfrozen and trained with a lower learning rate.
+Instead of training a Deep Learning model completely from scratch, the pretrained VGG19 architecture is used as the starting point.
 
-Pretrained CNN ↓ Selected Layers Unfrozen ↓ Fine-Tuning ↓ Custom Classification Head ↓ NORMAL / PNEUMONIA
+### Stage 1 — Feature Extraction
 
-Fine-tuning allows the model to learn features that are more specific to chest X-ray images.
+The pretrained VGG19 convolutional layers are initially frozen while custom classification layers are trained.
 
-🔬 Data Preprocessing
+```text
+Pretrained VGG19
+       |
+       v
+Frozen Convolutional Layers
+       |
+       v
+Feature Extraction
+       |
+       v
+Custom Classification Layers
+       |
+       v
+NORMAL / PNEUMONIA
+```
+
+### Stage 2 — Fine-Tuning
+
+Selected pretrained VGG19 layers are unfrozen and trained with a lower learning rate.
+
+```text
+Pretrained VGG19
+       |
+       v
+Selected Layers Unfrozen
+       |
+       v
+Fine-Tuning
+       |
+       v
+Custom Classification Head
+       |
+       v
+NORMAL / PNEUMONIA
+```
+
+Fine-tuning allows the model to adapt pretrained features to the characteristics of chest X-ray images.
+
+---
+
+## 🔬 Data Preprocessing
 
 Before training, the X-ray images undergo preprocessing to ensure consistency.
 
-Preprocessing Steps
+### Preprocessing Steps
 
-Load image.
+1. Load chest X-ray images.
+2. Resize images to the required input dimensions.
+3. Normalize pixel values.
+4. Convert images into model-compatible tensors.
+5. Create batches for training.
+6. Assign corresponding class labels.
 
-Resize to the required input dimensions.
+### Preprocessing Workflow
 
-Normalize pixel values.
+```text
+Raw X-Ray Image
+       |
+       v
+Image Loading
+       |
+       v
+Image Resizing
+       |
+       v
+Normalization
+       |
+       v
+Tensor Conversion
+       |
+       v
+Model Input
+```
 
-Convert images into model-compatible tensors.
+---
 
-Create batches for training.
-
-Assign class labels.
-
-Raw X-Ray ↓ Image Loading ↓ Resize ↓ Normalization ↓ Tensor Conversion ↓ Model Input
-
-🔄 Data Augmentation
+## 🔄 Data Augmentation
 
 Data augmentation is applied to training images to improve generalization and reduce overfitting.
 
-Techniques used/explored include:
+### Techniques Used / Explored
 
-Horizontal Flip
+- Horizontal Flip
+- Rotation
+- Width Shift
+- Height Shift
+- Shearing
+- Zooming
 
-Rotation
+### Augmentation Workflow
 
-Width Shift
-
-Height Shift
-
-Shearing
-
-Zooming
-
-         Original X-Ray
-               │
-   ┌───────────┼───────────┐
-   ↓           ↓           ↓
-Rotation Flip/Shift Shearing │ │ │ └───────────┼───────────┘ ↓ Augmented Images
+```text
+          Original X-Ray
+                 |
+       +---------+---------+
+       |         |         |
+       v         v         v
+    Rotation    Flip    Shift/Zoom
+       |         |         |
+       +---------+---------+
+                 |
+                 v
+          Augmented Images
+```
 
 Data augmentation increases training-data diversity without requiring additional real-world images.
 
-⚖️ Class Imbalance Handling
+---
+
+## ⚖️ Class Imbalance Handling
 
 Class imbalance can cause a model to favor the majority class.
 
-The project analyzes the distribution of Normal and Pneumonia images and can use class weighting during model training.
+The project analyzes the distribution of NORMAL and PNEUMONIA images and can use class weighting during model training.
 
 Example:
 
-class_weights = { 0: 1.05, 1: 0.95 }
+```python
+class_weights = {
+    0: 1.05,
+    1: 0.95
+}
+```
 
 The exact weights depend on the class distribution of the training dataset.
 
-📊 Model Evaluation
+---
 
-The models are evaluated using multiple classification metrics.
+## 📊 Model Evaluation
 
-Metric
+The VGG19 model is evaluated using multiple classification metrics.
 
-Purpose
+| Metric | Purpose |
+|---|---|
+| Accuracy | Overall percentage of correct predictions. |
+| Precision | Proportion of predicted Pneumonia cases that are actually Pneumonia. |
+| Recall | Proportion of actual Pneumonia cases correctly identified. |
+| F1-Score | Harmonic mean of Precision and Recall. |
+| Confusion Matrix | Detailed breakdown of classification errors. |
 
-Accuracy
-
-Overall percentage of correct predictions
-
-Precision
-
-Proportion of predicted Pneumonia cases that are actually Pneumonia
-
-Recall
-
-Proportion of actual Pneumonia cases correctly identified
-
-F1-Score
-
-Harmonic mean of Precision and Recall
-
-Confusion Matrix
-
-Detailed breakdown of classification errors
-
-🚨 Why Recall Matters
+### 🚨 Why Recall Matters
 
 For a pneumonia-screening use case, recall is particularly important because it measures how many actual Pneumonia cases are correctly identified.
 
 A false negative occurs when:
 
-Actual: PNEUMONIA Predicted: NORMAL
+```text
+Actual:    PNEUMONIA
+Predicted: NORMAL
+```
 
-Therefore, model selection should not rely on accuracy alone. Recall, Precision, F1-Score, and the Confusion Matrix should also be considered.
+Therefore, model evaluation should not rely on accuracy alone. Recall, Precision, F1-Score, and the Confusion Matrix should also be considered.
 
-📈 Model Performance
+---
 
-Add the final test-set results from your experiments to the table below.
+## 📈 Model Performance
 
-Model
+The VGG19 model is evaluated using the independent test dataset.
 
-Accuracy
+| Model | Accuracy | Precision | Recall | F1-Score |
+|---|---:|---:|---:|---:|
+| **VGG19** | — | — | — | — |
 
-Precision
+The final model performance is determined based on the evaluation results.
 
-Recall
+*Note: Replace the placeholders with your actual test-set results.*
 
-F1-Score
+---
 
-VGG19
+## 🌐 Flask Web Application
 
-—
+The trained VGG19 model is integrated into a Flask-based web application.
 
-—
+The application provides a web interface where users can upload chest X-ray images and receive classification results.
 
-—
+### Prediction Workflow
 
-—
+```text
+User
+  |
+  v
+Upload Chest X-Ray
+  |
+  v
+Flask Backend
+  |
+  v
+Image Validation
+  |
+  v
+Resize & Normalize
+  |
+  v
+Trained VGG19 Model
+  |
+  v
+Prediction Probability
+  |
+  v
+Classification
+  |
+  v
+NORMAL / PNEUMONIA
+```
 
-ResNet50
+### Application Steps
 
-—
+1. **Open the application:** Launch the Flask application in your browser.
+2. **Upload an X-ray:** Select a chest X-ray image from your computer.
+3. **Submit the image:** The image is sent to the Flask backend.
+4. **Preprocess the image:** The application applies the preprocessing used during model development.
+5. **Generate prediction:** The processed image is passed to the trained VGG19 model.
+6. **Display result:** The application displays the predicted class.
 
-—
+### Example Prediction
 
-—
-
-—
-
-MobileNetV2
-
-—
-
-—
-
-—
-
-—
-
-EfficientNetB0
-
-—
-
-—
-
-—
-
-—
-
-DenseNet121
-
-—
-
-—
-
-—
-
-—
-
-Final Selected Model
-
-—
-
-—
-
-—
-
-—
-
-Note: Replace the dashes with your actual test-set results. Do not publish placeholder percentages such as XX%.
-
-🌐 Flask Web Application
-
-The trained model is integrated into a Flask-based web application.
-
-Prediction Workflow
-
-User ↓ Upload Chest X-Ray ↓ Flask Backend ↓ Image Validation ↓ Resize & Normalize ↓ Trained Deep Learning Model ↓ Prediction Probability ↓ Classification ↓ NORMAL / PNEUMONIA
-
-Application Steps
-
-Open the application
-Launch the Flask application in your browser.
-
-Upload an X-ray
-Select a chest X-ray image from your computer.
-
-Submit the image
-The image is sent to the Flask backend.
-
-Preprocess the image
-The application applies the preprocessing used during model development.
-
-Generate prediction
-The processed image is passed to the trained Deep Learning model.
-
-Display result
-The application displays the predicted class.
-
-Example:
-
+```text
 Prediction: PNEUMONIA
+```
 
 or
 
+```text
 Prediction: NORMAL
+```
 
-🛠️ Technology Stack
+---
 
-Category
+## 🛠️ Technology Stack
 
-Technologies
+| Category | Technologies |
+|---|---|
+| Programming Language | Python |
+| Deep Learning | TensorFlow, Keras |
+| Pretrained CNN Architecture | VGG19 |
+| Image Processing | OpenCV, Pillow |
+| Data Processing | NumPy, Pandas |
+| Model Evaluation | Scikit-learn |
+| Visualization | Matplotlib, Seaborn |
+| Web Framework | Flask |
+| Frontend | HTML, CSS, JavaScript |
+| Development | Jupyter Notebook, VS Code |
+| Version Control | Git, GitHub |
+| Large Model Files | Git LFS |
 
-Programming Language
+---
 
-Python
+## 📂 Project Structure
 
-Deep Learning
+```text
+Pneumonia_Prediction/
+│
+├── app.py
+│
+├── pneumonia_classifier.ipynb
+│
+├── model.h5
+│
+├── model_weights/
+│   ├── vgg19_model_01.h5
+│   ├── vgg19_model_02.h5
+│   └── vgg_unfrozen.h5
+│
+├── static/
+│   └── uploads/
+│       ├── NORMAL2-IM-0338-0001.jpeg
+│       └── person1660_virus_2869.jpeg
+│
+├── templates/
+│   └── ...
+│
+├── requirements.txt
+│
+├── .gitignore
+│
+├── .gitattributes
+│
+└── README.md
+```
 
-TensorFlow, Keras
+Large `.h5` files are managed using Git LFS.
 
-CNN Architectures
+---
 
-VGG19, ResNet50, MobileNetV2, EfficientNetB0, DenseNet121
+## ⚙️ Installation & Setup
 
-Image Processing
+### 1. Clone the Repository
 
-OpenCV, Pillow
-
-Data Processing
-
-NumPy, Pandas
-
-Model Evaluation
-
-Scikit-learn
-
-Visualization
-
-Matplotlib, Seaborn
-
-Web Framework
-
-Flask
-
-Frontend
-
-HTML, CSS, JavaScript
-
-Development
-
-Jupyter Notebook, VS Code
-
-Version Control
-
-Git, GitHub
-
-Large Model Files
-
-Git LFS
-
-📂 Project Structure
-
-Pneumonia_Prediction/ │ ├── app.py │ ├── pneumonia_classifier.ipynb │ ├── model.h5 │ ├── model_weights/ │ ├── vgg19_model_01.h5 │ ├── vgg19_model_02.h5 │ └── vgg_unfrozen.h5 │ ├── static/ │ └── uploads/ │ ├── NORMAL2-IM-0338-0001.jpeg │ └── person1660_virus_2869.jpeg │ ├── templates/ │ └── ... │ ├── requirements.txt ├── .gitignore ├── .gitattributes └── README.md
-
-Large .h5 files are managed using Git LFS.
-
-⚙️ Installation & Setup
-
-Clone the Repository
+```bash
 git clone https://github.com/Ruthu543/Pneumonia-Detection-System.git
+```
 
-Navigate to the Project
+### 2. Navigate to the Project Directory
+
+```bash
 cd Pneumonia_Prediction
+```
 
-Create a Virtual Environment
-Windows
+### 3. Create a Virtual Environment
 
+**Windows**
+
+```bash
 python -m venv venv
+```
 
-Activate it:
+Activate the environment:
 
+```bash
 venv\Scripts\activate
+```
 
-macOS / Linux
+**macOS / Linux**
 
+```bash
 python3 -m venv venv
+```
 
-Activate it:
+Activate the environment:
 
+```bash
 source venv/bin/activate
+```
 
-Install Dependencies
+### 4. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-📦 Git LFS Setup
+---
 
-The trained .h5 model files can be large, so this project uses Git Large File Storage (Git LFS).
+## 📦 Git LFS Setup
+
+The trained `.h5` model files can be large, so this project uses Git Large File Storage (Git LFS).
 
 Install and initialize Git LFS:
 
+```bash
 git lfs install
+```
 
 Pull the tracked model files:
 
+```bash
 git lfs pull
+```
 
 To verify tracked LFS files:
 
+```bash
 git lfs ls-files
+```
 
-▶️ Run the Application
+---
+
+## ▶️ Run the Application
 
 Start the Flask application:
 
+```bash
 python app.py
+```
 
 The application will typically be available at:
 
+```text
 http://127.0.0.1:5000
+```
 
 Open the address in your browser and upload a chest X-ray image.
 
-🧪 Training Workflow
+---
 
-The training notebook contains the model development process:
+## 🧪 Training Workflow
 
-Import Libraries ↓
-Load Dataset ↓
-Explore Dataset ↓
-Analyze Class Distribution ↓
-Visualize Sample Images ↓
-Preprocess Images ↓
-Apply Data Augmentation ↓
-Prepare Data Generators ↓
-Build Transfer Learning Model ↓
-Train Classification Head ↓
-Fine-Tune Selected Layers ↓
-Evaluate Model ↓
-Generate Confusion Matrix ↓
-Compare Models ↓
+The training notebook contains the complete VGG19 model development process.
+
+```text
+Import Libraries
+       |
+       v
+Load Dataset
+       |
+       v
+Explore Dataset
+       |
+       v
+Analyze Class Distribution
+       |
+       v
+Visualize Sample Images
+       |
+       v
+Preprocess Images
+       |
+       v
+Apply Data Augmentation
+       |
+       v
+Prepare Data Generators
+       |
+       v
+Load Pretrained VGG19
+       |
+       v
+Build Classification Model
+       |
+       v
+Train Classification Head
+       |
+       v
+Fine-Tune Selected Layers
+       |
+       v
+Evaluate Model
+       |
+       v
+Generate Confusion Matrix
+       |
+       v
+Compare Training Results
+       |
+       v
 Save Best Model
-📁 Dataset
+```
 
-The project works with chest X-ray images categorized into:
+---
 
-NORMAL PNEUMONIA
+## 📁 Dataset
+
+The project works with chest X-ray images categorized into two classes:
+
+- NORMAL
+- PNEUMONIA
 
 The dataset is divided into training, validation, and testing sets.
 
-Expected Dataset Structure
+### Expected Dataset Structure
 
-dataset/ │ ├── train/ │ ├── NORMAL/ │ └── PNEUMONIA/ │ ├── val/ │ ├── NORMAL/ │ └── PNEUMONIA/ │ └── test/ ├── NORMAL/ └── PNEUMONIA/
+```text
+dataset/
+│
+├── train/
+│   ├── NORMAL/
+│   └── PNEUMONIA/
+│
+├── val/
+│   ├── NORMAL/
+│   └── PNEUMONIA/
+│
+└── test/
+    ├── NORMAL/
+    └── PNEUMONIA/
+```
 
 The dataset itself is not included in this repository.
 
-🚀 Future Improvements
+---
 
-Improve model performance through additional fine-tuning.
+## 🚀 Future Improvements
 
-Compare advanced architectures and hyperparameters.
+- Improve model performance through additional fine-tuning.
+- Experiment with different VGG19 hyperparameters.
+- Improve handling of class imbalance.
+- Add Grad-CAM for model explainability.
+- Display prediction confidence.
+- Add Docker support.
+- Deploy the Flask application to a cloud platform.
+- Add automated model evaluation.
+- Improve the web application's UI/UX.
+- Extend the system to support additional chest X-ray conditions.
 
-Improve handling of class imbalance.
+---
 
-Add Grad-CAM for model explainability.
-
-Display prediction confidence.
-
-Add Docker support.
-
-Deploy the Flask application to a cloud platform.
-
-Add automated model evaluation.
-
-Improve the web application's UI/UX.
-
-Extend the system to support additional chest X-ray conditions.
-
-💡 Key Learnings
+## 💡 Key Learnings
 
 This project provided practical experience in:
 
-Deep Learning
+- Deep Learning
+- CNN-based image classification
+- VGG19 Architecture
+- Transfer Learning
+- Fine-Tuning
+- Medical image preprocessing
+- Data augmentation
+- Class imbalance handling
+- TensorFlow and Keras
+- Model evaluation
+- Flask application development
+- Git and GitHub
+- Git LFS
+- End-to-end ML project development
 
-CNN-based image classification
+---
 
-Transfer Learning
+## 🔮 Project Highlights
 
-Fine-Tuning
+- End-to-End Deep Learning Pipeline
+- Pretrained VGG19 Architecture
+- Transfer Learning
+- Fine-Tuning
+- Data Augmentation
+- Class Imbalance Analysis
+- Multiple Evaluation Metrics
+- Flask Web Application
+- Git LFS for Large Models
+- Image-Based Prediction
 
-Medical image preprocessing
+---
 
-Data augmentation
+## 👨‍💻 Author
 
-Class imbalance handling
+**Ruthu Madhavi Kola**
 
-TensorFlow and Keras
+GitHub: [https://github.com/Ruthu543](https://github.com/Ruthu543)
 
-Model evaluation
+---
 
-Flask application development
-
-Git and GitHub
-
-Git LFS
-
-End-to-end ML project development
-
-🔮 Project Highlights
-
-✔ End-to-End Deep Learning Pipeline ✔ Transfer Learning ✔ Multiple CNN Architectures ✔ Fine-Tuning ✔ Data Augmentation ✔ Class Imbalance Analysis ✔ Multiple Evaluation Metrics ✔ Flask Web Application ✔ Git LFS for Large Models ✔ Real-Time Image Prediction
-
-👨‍💻 Author
-
-Ruthu Madhavi Kola
-
-GitHub: https://github.com/Ruthu543
-
-⭐ Support
+## ⭐ Support
 
 If you found this project useful or interesting, consider giving the repository a ⭐ on GitHub.
 
-📄 Disclaimer
+---
 
-This project is developed for educational and research purposes. Predictions generated by the model should not be considered medical advice, diagnosis, or treatment recommendations. Always consult a qualified healthcare professional for medical evaluation.
+## 📄 Disclaimer
+
+This project is developed for educational and research purposes. Predictions generated by the model should not be considered medical advice, diagnosis, or treatment recommendations.
+
+Always consult a qualified healthcare professional for medical evaluation.
+
