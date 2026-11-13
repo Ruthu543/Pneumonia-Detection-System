@@ -1,5 +1,5 @@
-# 🫁 Pneumonia Prediction from Chest X-Ray Images(Cloud-Based Database)
-### VGG19 | Transfer Learning | Flask | Cloud-Based Database
+### 🫁 Pneumonia Prediction from Chest X-Ray Images(Cloud-Based Database)
+#### VGG19 | Transfer Learning | Flask | Cloud-Based Database
 
 An end-to-end Deep Learning image classification project that analyzes chest X-ray images and predicts whether an image belongs to the **NORMAL** or **PNEUMONIA** class using a pretrained VGG19 architecture.
 
